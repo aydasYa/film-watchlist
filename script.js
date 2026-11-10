@@ -17,6 +17,12 @@ form.addEventListener('submit', (e) => {
 
 });
 
+movieList.addEventListener('click', (e) => {
+    if (e.target.classList.contains('toggle-status')) {
+        console.log('Status button clicked');
+    }
+});
+
 function isTitleEmpty(titleText) {
     return titleText.trim() === '';
 }
@@ -35,6 +41,8 @@ function createMovieItem(titleText) {
     statusBtn.textContent = 'mark as watched';
     deleteBtn.textContent = 'delete movie';
 
+    statusBtn.classList.add('toggle-status');
+
     movieCard.append(title, status, statusBtn, deleteBtn);
     movieItem.appendChild(movieCard);
 
@@ -44,3 +52,4 @@ function createMovieItem(titleText) {
 function renderMovieItem(movieItem) {
     movieList.appendChild(movieItem);
 }
+
