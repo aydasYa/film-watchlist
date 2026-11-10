@@ -1,5 +1,6 @@
 const titleInput = document.querySelector('#title');
 const form = document.querySelector('form');
+const movieList = document.querySelector('ul');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -10,6 +11,10 @@ form.addEventListener('submit', (e) => {
         alert('Please enter a movie title.');
         return;
     }
+
+    const movieItem = createMovieItem(titleText);
+    renderMovieItem(movieItem);
+
 });
 
 function isTitleEmpty(titleText) {
@@ -34,4 +39,8 @@ function createMovieItem(titleText) {
     movieItem.appendChild(movieCard);
 
     return movieItem;
+}
+
+function renderMovieItem(movieItem) {
+    movieList.appendChild(movieItem);
 }
