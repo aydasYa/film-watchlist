@@ -7,7 +7,7 @@ form.addEventListener('submit', (e) => {
     const titleText = titleInput.value;
 
     if (isTitleEmpty(titleText)) {
-        alert('Please enter a film title.');
+        alert('Please enter a movie title.');
         return;
     }
 });
