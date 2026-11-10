@@ -16,8 +16,10 @@ function isTitleEmpty(titleText) {
     return titleText.trim() === '';
 }
 
-function createMovieCard(titleText) {
+function createMovieItem(titleText) {
+    const movieItem = document.createElement('li');
     const movieCard = document.createElement('div');
+
     const title = document.createElement('h2');
     const status = document.createElement('p');
     const statusBtn = document.createElement('button');
@@ -29,6 +31,7 @@ function createMovieCard(titleText) {
     deleteBtn.textContent = 'delete movie';
 
     movieCard.append(title, status, statusBtn, deleteBtn);
+    movieItem.appendChild(movieCard);
 
-    return movieCard;
+    return movieItem;
 }
