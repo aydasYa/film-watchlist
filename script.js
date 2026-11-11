@@ -19,17 +19,18 @@ form.addEventListener('submit', (e) => {
 
 movieList.addEventListener('click', (e) => {
     if (e.target.classList.contains('toggle-status')) {
-        const movieItem = e.target.closest("li");
-        const statusDisplay = movieItem.querySelector(".movie-status");
-        if (statusDisplay.textContent === "Unwatched") {
-            statusDisplay.textContent = "Watched";
-        } else statusDisplay.textContent = "Unwatched";
-
-        // update statusBtn inner text
         const statusBtn = e.target;
-        if (statusBtn.textContent === 'mark as watched') {
-            statusBtn.textContent = 'mark as unwatched';
-        } else statusBtn.textContent = 'mark as watched';
+        const movieItem = statusBtn.closest("li");
+        const isWatched = movieItem.classList.toggle("is-watched");
+        const statusDisplay = movieItem.querySelector(".movie-status");
+        
+        if (isWatched) {
+            statusDisplay.textContent = "Watched";
+            statusBtn.textContent = "mark as unwatched";
+        } else {
+            statusDisplay.textContent = "Unwatched";
+            statusBtn.textContent = "mark as watched";
+        }
     }
 });
 
