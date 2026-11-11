@@ -4,7 +4,7 @@ const movieList = document.querySelector('ul');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
     const titleText = titleInput.value;
 
     if (isTitleEmpty(titleText)) {
@@ -15,6 +15,23 @@ form.addEventListener('submit', (e) => {
     const movieItem = createMovieItem(titleText);
     renderMovieItem(movieItem);
 
+});
+
+movieList.addEventListener('click', (e) => {
+    if (e.target.classList.contains('toggle-status')) {
+        const statusBtn = e.target;
+        const movieItem = statusBtn.closest("li");
+        const isWatched = movieItem.classList.toggle("is-watched");
+        const statusDisplay = movieItem.querySelector(".movie-status");
+        
+        if (isWatched) {
+            statusDisplay.textContent = "Watched";
+            statusBtn.textContent = "mark as unwatched";
+        } else {
+            statusDisplay.textContent = "Unwatched";
+            statusBtn.textContent = "mark as watched";
+        }
+    }
 });
 
 function isTitleEmpty(titleText) {
@@ -35,6 +52,9 @@ function createMovieItem(titleText) {
     statusBtn.textContent = 'mark as watched';
     deleteBtn.textContent = 'delete movie';
 
+    statusBtn.classList.add('toggle-status');
+    status.classList.add('movie-status');
+
     movieCard.append(title, status, statusBtn, deleteBtn);
     movieItem.appendChild(movieCard);
 
@@ -44,3 +64,4 @@ function createMovieItem(titleText) {
 function renderMovieItem(movieItem) {
     movieList.appendChild(movieItem);
 }
+
